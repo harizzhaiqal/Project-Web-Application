@@ -1,0 +1,58 @@
+<div class="w3-container" *ngIf="taskAddForm">
+  <form class="w3-container" [formGroup]="taskAddForm" (ngSubmit)="doRegister()">
+    <div class="w3-panel w3-round-small w3-teal">
+      <h3><span *ngIf="index === undefined">Create Task</span><span *ngIf="index != undefined">Update Task</span>
+        <a (click)="back();" class="w3-button w3-green custom-button"><i class="w3-medium fa fa-chevron-left"></i>
+          Back</a>
+      </h3>
+    </div>
+
+    <label class="w3-text-blue"><b>Task Name</b></label>
+    <input class="w3-input w3-border" type="text" formControlName="task_name" [(ngModel)]="task_name">
+    <div class="w3-panel w3-red"
+      *ngIf="taskAddForm.controls.task_name.invalid && (taskAddForm.controls.task_name.dirty || taskAddForm.controls.task_name.touched)">
+      Please enter 3 to 50 characters</div>
+
+    <label class="w3-text-blue"><b>User</b></label>
+    <input class="w3-input w3-border" type="text" formControlName="task_user" [(ngModel)]="task_user">
+    <div class="w3-panel w3-red"
+      *ngIf="taskAddForm.controls.task_user.invalid && (taskAddForm.controls.task_user.dirty || taskAddForm.controls.task_user.touched)">
+      Please enter 3 to 50 characters </div>
+
+    <label class="w3-text-blue"><b>Slug</b></label>
+    <input class="w3-input w3-border" type="text" formControlName="task_slug" [(ngModel)]="task_slug" disabled>
+    <div class="w3-panel w3-red"
+      *ngIf="taskAddForm.controls.task_slug.invalid && (taskAddForm.controls.task_slug.dirty || taskAddForm.controls.task_slug.touched)">
+      Please enter 3 to 50 characters </div>
+
+    <label class="w3-text-blue"><b>Task Description</b></label>
+    <textarea class="w3-input w3-border" type="text" formControlName="task_description" rows="3"
+      [(ngModel)]="task_description"></textarea>
+    <div class="w3-panel w3-red"
+      *ngIf="taskAddForm.controls.task_description.invalid && (taskAddForm.controls.task_description.dirty || taskAddForm.controls.task_description.touched)">
+      Please enter 3 to 300 characters </div>
+
+    <label class="w3-text-blue"><b>Due Date</b></label>
+    <input class="w3-input w3-border" [(ngModel)]="task_duedate" type="text" formControlName="task_duedate"
+      style="width: 30%;" onfocus="this.value=''">
+    <div class="w3-panel w3-red"
+      *ngIf="taskAddForm.controls.task_duedate.invalid && (taskAddForm.controls.task_duedate.dirty || taskAddForm.controls.task_duedate.touched)">
+      Please enter 3 to 50 characters </div>
+
+    <label class="w3-text-blue"><b>Status</b></label>
+    <select class="w3-input w3-border" [(ngModel)]="task_status" formControlName="task_status" required
+      style="width: 30%;">
+      <option value="0">{{ '--Select Status--'}}</option>
+      <option *ngFor="let item of statusListData" value="{{item.name}}">{{ item.name }}
+      </option>
+    </select>
+    <div class="w3-panel w3-red"
+      *ngIf="taskAddForm.controls.task_status.invalid && (taskAddForm.controls.task_status.dirty || taskAddForm.controls.task_status.touched)">
+    </div>
+
+    <button class="w3-btn w3-blue" type="submit" [disabled]="!taskAddForm.valid"><span
+        *ngIf="index === undefined">Submit</span><span *ngIf="index != undefined">Update</span> <i
+        class="w3-medium fa fa-check"></i> </button>
+
+  </form>
+</div>

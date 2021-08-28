@@ -1,0 +1,28 @@
+<div class="w3-container">
+  <div class="w3-panel w3-round-small w3-teal">
+    <h3>Project List <button (click)="addProject();" class="w3-button w3-green custom-button"><i
+          class="w3-medium  fa fa-plus"></i> Add New Project</button></h3>
+  </div>
+  <div class="w3-panel w3-light-grey w3-padding-16 w3-card-2"
+    *ngIf="(projectListData | filter:filterData | filter:filterData).length != 0">
+    <table class="w3-table w3-striped w3-bordered">
+      <tr>
+        <th><i class="w3-medium custom-icon fa fa-refresh"></i>No.</th>
+        <!-- <th>ID</th> -->
+        <th>Project Name</th>
+        <th>Project Slug</th>
+        <th> Manager</th>
+        <th><i class="w3-medium custom-icon fa fa-pencil"></i> Update</th>
+        <th><i class="w3-medium custom-icon fa fa-trash"></i> Delete</th>
+      </tr>
+      <tr *ngFor="let project of projectListData | filter:filterData; index as i;" appHighlightStudent>
+        <td>{{i +1}}</td>
+        <td class="pointer" [routerLink]="['/project-detail', i]">{{project.project_name}} </td>
+        <td class="pointer" [routerLink]="['/project-detail', i]">{{project.project_slug}}</td>
+        <td class="pointer" [routerLink]="['/project-detail', i]">{{project.project_manager}}</td>
+        <td><button (click)="updateProject(project.id);" class="w3-button w3-blue">Update</button></td>
+        <td><button (click)="deleteProject(i);" class="w3-button w3-red">Delete</button></td>
+      </tr>
+    </table>
+  </div>
+</div>

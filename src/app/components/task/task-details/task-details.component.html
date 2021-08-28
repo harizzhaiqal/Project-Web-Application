@@ -1,0 +1,37 @@
+<div class="w3-container" *ngIf="taskDetail">
+  <div class="w3-panel w3-round-small w3-teal">
+    <h3>Project Details <button [routerLink]="['/task-update', index]" class="w3-button w3-blue custom-button"> <i
+          class="w3-medium fa fa-pencil"></i> Edit</button>
+      <button (click)="back()" class="w3-button w3-green custom-button margin-right"> <i
+          class="w3-medium fa fa-chevron-left"></i>Back</button>
+    </h3>
+  </div>
+  <div class=" w3-card custom-card"><br>
+    <table class="w3-table w3-bordered">
+      <tr>
+        <td><i class="w3-medium custom-icon fa fa-user"></i>Task Name</td>
+        <td>: <b>{{taskDetail.task_name}}</b></td>
+      </tr>
+      <tr>
+        <td><i class="w3-medium custom-icon fa fa-user"></i>User</td>
+        <td>: <b>{{taskDetail.task_user}}</b></td>
+      </tr>
+      <tr>
+        <td><i class="w3-medium custom-icon fa fa-user"></i>Slug</td>
+        <td>: <b>{{taskDetail.task_slug}}</b></td>
+      </tr>
+      <tr>
+        <td><i class="w3-medium custom-icon fa fa-envelope-o"></i>Description</td>
+        <td>: <b>{{taskDetail.task_description}}</b></td>
+      </tr>
+      <tr>
+        <td><i class="w3-medium custom-icon fa fa-phone"></i>Due Date</td>
+        <td>: <b>{{taskDetail.task_duedate}}</b></td>
+      </tr>
+      <tr>
+        <td><i class="w3-medium custom-icon fa fa-phone"></i>Status</td>
+        <td>: <b>{{taskDetail.task_status}}</b></td>
+      </tr>
+    </table>
+  </div>
+</div>
